@@ -19,7 +19,12 @@ jobs:
       with:
         node-version: 16.x
         cache: 'npm'
-    - run: cd src/ReactAccessibilityTesting/ReactAccessibilityTesting
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+    - name: npm install
+      working-directory: ./src/ReactAccessibilityTesting/ReactAccessibilityTesting
+      run: npm ci
+    - name: npm build
+      working-directory: ./src/ReactAccessibilityTesting/ReactAccessibilityTesting
+      run: npm run build --if-present
+    - name: npm tests
+      working-directory: ./src/ReactAccessibilityTesting/ReactAccessibilityTesting
+      run: npm test
